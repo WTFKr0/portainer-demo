@@ -4,8 +4,6 @@ services:
     image: docker:dind
     privileged: true
     hostname: manager1
-    volumes:
-      - "$PWD/endpoints.json:/endpoints.json:ro"
     ports:
       - "19000:9000"
       - "19001:9001"
@@ -13,17 +11,17 @@ services:
     image: docker:dind
     privileged: true
     hostname: manager2
-    volumes:
-      - "$PWD/endpoints.json:/endpoints.json:ro"
   worker1:
     image: docker:dind
     privileged: true
     hostname: worker1
-    volumes:
-      - "$PWD/endpoints.json:/endpoints.json:ro"
   worker2:
     image: docker:dind
     privileged: true
     hostname: worker2
+  portainer:
+    image: portainer
+    ports:
+      - 19000:9000
     volumes:
       - "$PWD/endpoints.json:/endpoints.json:ro"
