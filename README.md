@@ -1,5 +1,6 @@
 # portainer-demo
 Demo of portainer in swarm mode in dind  
+You can test on http://play-with-docker.com  
   
 Usage :
 ```
