@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Shell
-docker-compose up -d
+# Up all dinds nodes
+docker-compose up -d manager1 manager2 worker1 worker2
 
 # Wait some seconds for service Up
 sleep 5
@@ -20,12 +20,8 @@ docker-compose exec worker1 docker swarm join --token $tokenworker manager1:2377
 # Worker2 join
 docker-compose exec worker2 docker swarm join --token $tokenworker manager1:2377
 
-# Deploy portainer
-ipmanager1=$(docker-compose exec manager1 ifconfig eth0 | grep "inet addr:" | awk -F":" '{print $2}' | awk '{print $1}')
-ipmanager2=$(docker-compose exec manager2 ifconfig eth0 | grep "inet addr:" | awk -F":" '{print $2}' | awk '{print $1}')
-ipworker1=$(docker-compose exec worker1 ifconfig eth0 | grep "inet addr:" | awk -F":" '{print $2}' | awk '{print $1}')
-ipworker2=$(docker-compose exec worker2 ifconfig eth0 | grep "inet addr:" | awk -F":" '{print $2}' | awk '{print $1}')
-docker-compose exec manager1 docker service create -p 9000:9000 --name portainer --host manager1:$ipmanager1 --host manager2:$ipmanager2 --host worker1:$ipworker1 --host worker2:$ipworker2 --mount type=bind,source=/endpoints.json,target=/endpoints.json portainer/portainer --external-endpoints /endpoints.json
+# Up portainer
+docker-compose up -d portainer
 
-# Deploy 6 istrances of whoami
+# Deploy 6 instances of whoami
 docker-compose exec manager1 docker service create --name whoami -p 9001:80 --replicas=6 emilevauge/whoami
