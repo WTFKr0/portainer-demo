@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "manager1",
+    "URL": "tcp://manager1:2375"
+  },
+  {
+    "Name": "manager2",
+    "URL": "tcp://manager2:2375"
+  },
+  {
+    "Name": "worker1",
+    "URL": "tcp://worker1:2375"
+  },
+  {
+    "Name": "worker2",
+    "URL": "tcp://worker2:2375"
+  }
+]
