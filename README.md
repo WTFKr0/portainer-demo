@@ -6,7 +6,7 @@ Usage :
 ```
 git clone https://github.com/WTFKr0/portainer-demo.git
 cd portainer-demo
-sh portainer-demo.sh
+./portainer-demo.sh
 ```
 
 This will launch 4 dind containers in swarm mode (2 managers / 2 workers)  
