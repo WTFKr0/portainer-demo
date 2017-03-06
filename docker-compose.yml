@@ -22,3 +22,4 @@ services:
       - 19000:9000
     volumes:
       - "$PWD/endpoints.json:/endpoints.json:ro"
+    command: --external-endpoints
