@@ -1,0 +1,33 @@
+version: "3"
+services:
+  manager1:
+    image: docker:dind
+    command: --storage-driver=overlay2 --log-opt max-size=20M --log-opt max-file=2 --experimental
+    privileged: true
+    hostname: manager1
+    volumes:
+      - "$PWD/endpoints.json:/endpoints.json:ro"
+    ports:
+      - "19000:9000"
+      - "19001:9001"
+  manager2:
+    image: docker:dind
+    command: --storage-driver=overlay2 --log-opt max-size=20M --log-opt max-file=2 --experimental
+    privileged: true
+    hostname: manager2
+    volumes:
+      - "$PWD/endpoints.json:/endpoints.json:ro"
+  worker1:
+    image: docker:dind
+    command: --storage-driver=overlay2 --log-opt max-size=20M --log-opt max-file=2 --experimental
+    privileged: true
+    hostname: worker1
+    volumes:
+      - "$PWD/endpoints.json:/endpoints.json:ro"
+  worker2:
+    image: docker:dind
+    command: --storage-driver=overlay2 --log-opt max-size=20M --log-opt max-file=2 --experimental
+    privileged: true
+    hostname: worker2
+    volumes:
+      - "$PWD/endpoints.json:/endpoints.json:ro"
