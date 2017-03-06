@@ -24,4 +24,4 @@ docker-compose exec worker2 docker swarm join --token $tokenworker manager1:2377
 docker-compose up -d portainer
 
 # Deploy 6 instances of whoami
-docker-compose exec manager1 docker service create --name whoami -p 9001:80 --replicas=6 emilevauge/whoami
+docker-compose exec manager1 docker service create --name whoami -p 80:80 --replicas=6 emilevauge/whoami
