@@ -28,4 +28,4 @@ ipworker2=$(docker-compose exec worker2 ifconfig eth0 | grep "inet addr:" | awk 
 docker-compose exec manager1 docker service create -p 9000:9000 --name portainer --host manager1:$ipmanager1 --host manager2:$ipmanager2 --host worker1:$ipworker1 --host worker2:$ipworker2 --mount type=bind,source=/endpoints.json,target=/endpoints.json portainer/portainer --external-endpoints /endpoints.json
 
 # Deploy 6 istrances of whoami
-docker-compose -f docker-compose-4nodes.yml exec manager1 docker service create --name whoami -p 9001:80 --replicas=6 emilevauge/whoami
+docker-compose exec manager1 docker service create --name whoami -p 9001:80 --replicas=6 emilevauge/whoami
