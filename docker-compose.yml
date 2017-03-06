@@ -4,6 +4,8 @@ services:
     image: docker:dind
     privileged: true
     hostname: manager1
+    ports:
+      - 19001:80
   manager2:
     image: docker:dind
     privileged: true
