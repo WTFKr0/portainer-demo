@@ -17,7 +17,7 @@ services:
     privileged: true
     hostname: worker2
   portainer:
-    image: portainer
+    image: portainer/portainer
     ports:
       - 19000:9000
     volumes:
