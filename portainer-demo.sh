@@ -8,8 +8,8 @@ sleep 5
 
 # Manager1 init
 docker-compose exec manager1 docker swarm init
-tokenworker=$(docker-compose exec manager1 docker swarm join-token worker | grep -- "--token " | awk '{print $2}')
-tokenmanager=$(docker-compose exec manager1 docker swarm join-token manager | grep -- "--token " | awk '{print $2}')
+tokenworker=$(docker-compose exec manager1 docker swarm join-token -q worker)
+tokenmanager=$(docker-compose exec manager1 docker swarm join-token -q manager)
 
 # Manager2 join
 docker-compose exec manager2 docker swarm join --token $tokenmanager manager1:2377
