@@ -1,7 +1,7 @@
 # portainer-demo
 Demo of portainer in swarm mode in dind  
 You can test on http://play-with-docker.com for the portainer UI  
-The service creation on play-with-docker is not working, I think it's due to dind in dind (too many incpetion layers :D )
+The service creation on play-with-docker is not working, I think it's due to dind in dind (too many inception layers :D )
   
 Usage :
 ```
